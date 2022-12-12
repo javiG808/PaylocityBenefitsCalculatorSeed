@@ -282,6 +282,11 @@ namespace Api.Services
 
                     if (dependentServiceResponse.Success == false)
                     {
+                        //delete just added employee
+                        //prolly best to flip this logic, add dependents first then emp
+                        context.Employees.Remove(addEmp);
+                        await context.SaveChangesAsync();
+
                         var error = new ApiResponse<AddEmployeeDto>
                         {
                             Data = null,
