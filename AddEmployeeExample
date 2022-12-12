@@ -1,0 +1,21 @@
+{
+  "firstName": "Homer",
+  "lastName": "Simpson",
+  "salary": 100000,
+  "dateOfBirth": "1950-12-12T23:12:51.672Z",
+  "dependents": [
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "dateOfBirth": "2000-12-12T23:12:51.672Z",
+      "relationship": 1
+    },
+	{
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "dateOfBirth": "2000-12-12T23:12:51.672Z",
+      "relationship": 3
+    }
+  ],
+  "salaryNote": "new hire"
+}
