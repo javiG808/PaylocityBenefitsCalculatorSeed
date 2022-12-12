@@ -1,9 +1,22 @@
-import { currencyFormat } from "./Constants";
+import { baseUrl, currencyFormat } from "./Constants";
+import { useNavigate } from "react-router-dom";
 
 const Employee = (props) => {
     const firstName = props.firstName || '';
     const lastName = props.lastName || '';
     const salary = props.salary || 0;
+    //WHATS  USE navigate??
+    const navigate = useNavigate();
+
+    const handleDelete = async (id) => {
+        await fetch(`${baseUrl}/api/v1/Employees/${id}`, {
+            method: 'DELETE',
+          })
+          //handle success/error
+          //refresh page
+          navigate(0)
+      }
+      
     return (
         <tr>
             <th scope="row">{props.id}</th>
@@ -13,7 +26,7 @@ const Employee = (props) => {
             <td>{currencyFormat(salary)}</td>
             <td>{props.dependents?.length || 0}</td>
             <td>
-                <a href="#" data-bs-toggle="modal" data-bs-target={`#${props.editModalId}`}>Edit</a>  <a href="#">Delete</a>
+            <button onClick={()=> navigate(`/PaychecksForEmployeeId/${props.id}`)}>Paychecks</button> | <button data-bs-toggle="modal" id={`${props.id}`} data-bs-target={`#${props.editModalId}`}>Edit</button> | <button onClick={() => handleDelete(props.id)}>Delete</button>
             </td>
         </tr>
     );
