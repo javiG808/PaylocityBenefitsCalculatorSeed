@@ -1,10 +1,14 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using Api.Data;
+using Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => {
@@ -17,13 +21,30 @@ builder.Services.AddSwaggerGen(c => {
     });
 });
 
+//ideally add automapper
+//builder.Services.AddAutoMapper(typeof(Program).Assembly);
+
+builder.Services.AddDbContext<PayrollDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("PayrollDbConnection"));
+});
+
+//transients, services instanced when needed
+builder.Services.AddTransient<ICalculatorService, CalculatorService>();
+builder.Services.AddTransient<IPaycheckService, PaycheckService>();
+builder.Services.AddTransient<IDependentsService, DependentsService>();
+builder.Services.AddTransient<IEmployeesService, EmployeesService>();
+
 var allowLocalhost = "allow localhost";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowLocalhost,
         policy  =>
         {
-            policy.WithOrigins("http://localhost:3000", "http://localhost");
+            policy.WithOrigins("http://localhost:3000", "http://localhost")
+            //to allow for delete etc
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         });
 });
 
