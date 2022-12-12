@@ -48,7 +48,6 @@ namespace Api.Services
 
             if(paycheck == null)
             {
-                response.Data = null; //DO I NEED THIS????
                 response.Success = false;
                 response.Message = $"Paycheck with Id {id} not found";
                 response.Error = Constants.ErrorCode.PaycheckNotFound;
@@ -91,7 +90,6 @@ namespace Api.Services
 
             if (!paychecks.Any())
             {
-                response.Data = null; //DO I NEED THIS????
                 response.Success = false;
                 response.Message = $"No Paychecks found.";
                 response.Error = Constants.ErrorCode.PaycheckNotFound;
@@ -134,7 +132,6 @@ namespace Api.Services
 
             if (!paychecks.Any())
             {
-                response.Data = null; //DO I NEED THIS????
                 response.Success = false;
                 response.Message = $"No Paychecks found.";
                 response.Error = Constants.ErrorCode.PaycheckNotFound;

@@ -26,7 +26,7 @@ namespace Api.Data
 
         //could add a more unique identifier like SSN to prevent dupes
 
-        //SHOULD I REMOVE VIRTUALS? DO I NEED LAZY LOADING?
+        //not sure if i need lazy loading yet?
         public virtual List<Dependent>? Dependents { get; set; }
         public virtual List<Paycheck>? Paychecks { get; set; }
     }
