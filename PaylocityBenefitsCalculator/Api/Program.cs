@@ -50,6 +50,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+//running migrations to create db
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<PayrollDbContext>();
+    context.Database.Migrate();
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

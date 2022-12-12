@@ -45,16 +45,6 @@ namespace Api.Services
             decimal additionalYearlyDeductionPerPaycheck = paycheckDto.AdditionalYearlyCostByPercentage / Constants.CalculatorValues.NumberOfPaychecks;
             decimal additionalDeductionPerDependentPerPaycheck = paycheckDto.AdditionalDependentsCostByAgePerYear / Constants.CalculatorValues.NumberOfPaychecks;
 
-            //careful with 0/26 DUNNO IF THESE ARE NECESSARY?>??
-            //if (paycheckDto.DependentsBaseCostPerYear > 0)
-            //baseCostPerDependentPerPaycheck = paycheckDto.DependentsBaseCostPerYear / Constants.CalculatorValues.NumberOfPaychecks;
-
-            //if (paycheckDto.AdditionalYearlyCostByPercentage > 0)
-            //additionalYearlyDeductionPerPaycheck = paycheckDto.AdditionalYearlyCostByPercentage / Constants.CalculatorValues.NumberOfPaychecks;
-
-            //if (paycheckDto.AdditionalDependentsCostByAgePerYear > 0)
-            //additionalDeductionPerDependentPerPaycheck = paycheckDto.AdditionalDependentsCostByAgePerYear / Constants.CalculatorValues.NumberOfPaychecks;
-
             //using jan first 2023 for example, ideally this value can be set by admin 
             var startDate = Constants.CalculatorValues.StartDate;
 
@@ -64,7 +54,7 @@ namespace Api.Services
             var paychecks = new List<Paycheck>();
 
             //this 26 should be a constant or setting!
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < Constants.CalculatorValues.NumberOfPaychecks; i++)
             {
                 var paycheck = new Paycheck
                 {

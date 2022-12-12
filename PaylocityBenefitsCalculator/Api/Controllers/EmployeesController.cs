@@ -42,6 +42,9 @@ namespace Api.Controllers
         [HttpGet("")]
         public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll()
         {
+            //TASK
+            //used basic 3 layer approach business, service, data layers 
+            //controller calls services, services do work and data operations
             var response = await _employeeService.GetAll();
 
             if (response.Success == false)

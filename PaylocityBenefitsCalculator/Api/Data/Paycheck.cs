@@ -17,7 +17,6 @@ namespace Api.Data
         [Precision(18, 2)]
         public decimal TotalDeductionsPerPaycheck { get; set; }
 
-        //DO I NEED MONTHLY BASE DEDUCTION HERE?
         [Required]
         [Precision(18, 2)]
         public decimal MonthlyBaseDeductionPerPaycheck { get; set; }
@@ -43,9 +42,6 @@ namespace Api.Data
 
         [Required]
         public DateTime PayDate { get; set; }
-
-        //maybe not needed!!
-        //public bool Paid { get; set; }
 
         public int EmployeeId { get; set; }
 
