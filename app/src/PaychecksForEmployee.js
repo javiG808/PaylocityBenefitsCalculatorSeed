@@ -60,10 +60,6 @@ const Paychecks = (props) => {
             ))}
             </tbody>
         </table>
-        {/* <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#${addEmployeeModalId}`}>Add Employee</button>
-        <AddEmployeeModal
-            id={addEmployeeModalId}
-        /> */}
     </div>
   );
 };
