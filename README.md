@@ -29,13 +29,13 @@ NOTE: I did not add seed data, however, this json could be pasted in swagger to 
       "firstName": "Bart",
       "lastName": "Simpson",
       "dateOfBirth": "2000-12-12T23:12:51.672Z",
-      "relationship": 1
+      "relationship": 3
     },
 	{
       "firstName": "Marge",
       "lastName": "Simpson",
       "dateOfBirth": "2000-12-12T23:12:51.672Z",
-      "relationship": 3
+      "relationship": 1
     }
   ],
   "salaryNote": "new hire"
