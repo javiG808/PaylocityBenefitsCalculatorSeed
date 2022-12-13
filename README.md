@@ -46,3 +46,4 @@ NOTE: I did not add seed data, however, this json could be pasted in swagger to 
 <br />
 1.- Cant post new employee from frontend(getting a fetch issue?)<br />
 2.- Cant edit employee from frontend <br />
+3.- Frontend validations/error handling
