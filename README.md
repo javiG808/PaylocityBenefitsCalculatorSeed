@@ -5,7 +5,7 @@
 <img src="https://raw.githubusercontent.com/javiG808/PaylocityBenefitsCalculatorSeed/master/addDb.png" width="500">
 <br />
 <br />
-2.- Get the connection string(use provided .sql file)
+2.- Get the connection string(execute provided query in .sql file on new db)
 <br />
 <img src="https://raw.githubusercontent.com/javiG808/PaylocityBenefitsCalculatorSeed/master/getConnectionString.png" width="500">
 <br />
