@@ -5,7 +5,6 @@ const Employee = (props) => {
     const firstName = props.firstName || '';
     const lastName = props.lastName || '';
     const salary = props.salary || 0;
-    //WHATS  USE navigate??
     const navigate = useNavigate();
 
     const handleDelete = async (id) => {
