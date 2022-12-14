@@ -3,53 +3,43 @@ import { baseUrl } from './Constants';
 let handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(event);
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const salary = event.target.salary.value;
-    const dateOfBirth = event.target.dob.value;
-    const dependents = [];
-    dependents[0] = { firstName: event.target.dep1FirstName.value, lastName: event.target.dep1LastName.value, dateOfBirth: event.target.dep1Dob.value, relationship: event.target.dep1Relationship.value};
-    dependents[1] = { firstName: event.target.dep2FirstName.value, lastName: event.target.dep2LastName.value, dateOfBirth: event.target.dep2Dob.value, relationship: event.target.dep2Relationship.value};
+    //getting form data
+    // const json = {};
+    // Array.from(formData.entries()).forEach(([key, value]) => {
+    //     json[key] = value;
+    // })
 
-    let bodyTest = JSON.stringify({
-        firstName: firstName,
-        lastName: lastName,
-        salary: salary,
-        dateOfBirth: dateOfBirth, 
-        dependents: dependents
-      });
+    // JSON.stringify(json)
 
-      console.log(bodyTest);
+    // console.log(json);
 
-      const raw = await fetch('https://localhost:7124/api/v1/Employees', {
-        method: 'POST',
-        headers: {
-            'accept': 'text/plain',
-            'Content-Type': 'application/json'
-        },
-        // body: '{\n  "firstName": "Homer",\n  "lastName": "Simpson",\n  "salary": 100000,\n  "dateOfBirth": "1950-12-12T23:12:51.672Z",\n  "dependents": [\n    {\n      "firstName": "Bart",\n      "lastName": "Simpson",\n      "dateOfBirth": "2000-12-12T23:12:51.672Z",\n      "relationship": 1\n    },\n\t{\n      "firstName": "Marge",\n      "lastName": "Simpson",\n      "dateOfBirth": "2000-12-12T23:12:51.672Z",\n      "relationship": 3\n    }\n  ],\n  "salaryNote": "new hire"\n}',
-        body: JSON.stringify({
-            'firstName': 'Homer',
-            'lastName': 'Simpson',
-            'salary': 100000,
-            'dateOfBirth': '1950-12-12T23:12:51.672Z',
-            'dependents': [
-                {
-                    'firstName': 'Bart',
-                    'lastName': 'Simpson',
-                    'dateOfBirth': '2000-12-12T23:12:51.672Z',
-                    'relationship': 1
-                },
-                {
-                    'firstName': 'Marge',
-                    'lastName': 'Simpson',
-                    'dateOfBirth': '2000-12-12T23:12:51.672Z',
-                    'relationship': 3
-                }
-            ],
-            'salaryNote': 'new hire'
-        })
+    const raw = await fetch('https://localhost:7124/api/v1/Employees', {
+    method: 'POST',
+    headers: {
+        'accept': 'text/plain',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        'firstName': 'Homer',
+        'lastName': 'Simpson',
+        'salary': 100000,
+        'dateOfBirth': '1950-12-12T23:12:51.672Z',
+        'dependents': [
+            {
+                'firstName': 'Bart',
+                'lastName': 'Simpson',
+                'dateOfBirth': '2000-12-12T23:12:51.672Z',
+                'relationship': 1
+            },
+            {
+                'firstName': 'Marge',
+                'lastName': 'Simpson',
+                'dateOfBirth': '2000-12-12T23:12:51.672Z',
+                'relationship': 3
+            }
+        ],
+        'salaryNote': 'new hire'
+    })
     });
     const response = await raw.json();
             if (response.success) {
