@@ -22,26 +22,43 @@ let handleSubmit = async (event) => {
 
       console.log(bodyTest);
 
-    try {
-        let res = await fetch(`${baseUrl}/api/v1/Employees/`, {
-          method: "POST",
-          headers: {
-            'Accept': 'application/json',
+      const raw = await fetch('https://localhost:7124/api/v1/Employees', {
+        method: 'POST',
+        headers: {
+            'accept': 'text/plain',
             'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            firstName: firstName,
-            lastName: lastName,
-            salary: salary,
-            dateOfBirth: dateOfBirth, 
-            dependents: dependents
-          }),
-        });
-        //if success etc
-        console.log(res);
-      } catch (err) {
-        console.log(err);
-      }
+        },
+        // body: '{\n  "firstName": "Homer",\n  "lastName": "Simpson",\n  "salary": 100000,\n  "dateOfBirth": "1950-12-12T23:12:51.672Z",\n  "dependents": [\n    {\n      "firstName": "Bart",\n      "lastName": "Simpson",\n      "dateOfBirth": "2000-12-12T23:12:51.672Z",\n      "relationship": 1\n    },\n\t{\n      "firstName": "Marge",\n      "lastName": "Simpson",\n      "dateOfBirth": "2000-12-12T23:12:51.672Z",\n      "relationship": 3\n    }\n  ],\n  "salaryNote": "new hire"\n}',
+        body: JSON.stringify({
+            'firstName': 'Homer',
+            'lastName': 'Simpson',
+            'salary': 100000,
+            'dateOfBirth': '1950-12-12T23:12:51.672Z',
+            'dependents': [
+                {
+                    'firstName': 'Bart',
+                    'lastName': 'Simpson',
+                    'dateOfBirth': '2000-12-12T23:12:51.672Z',
+                    'relationship': 1
+                },
+                {
+                    'firstName': 'Marge',
+                    'lastName': 'Simpson',
+                    'dateOfBirth': '2000-12-12T23:12:51.672Z',
+                    'relationship': 3
+                }
+            ],
+            'salaryNote': 'new hire'
+        })
+    });
+    const response = await raw.json();
+            if (response.success) {
+                //close modal and return to index
+            }
+            else {
+                //set error
+            }
+   
 };
 
 const AddEmployeeModal = () => {
