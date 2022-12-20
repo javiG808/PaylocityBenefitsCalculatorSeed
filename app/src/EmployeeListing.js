@@ -7,9 +7,8 @@ const EmployeeListing = () => {
     const [employees, setEmployees] = useState([]);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        async function getEmployees() {
-            const raw = await fetch(`${baseUrl}/api/v1/Employees`);
+    const getEmpsTest = async () => {
+        const raw = await fetch(`${baseUrl}/api/v1/Employees`);
             const response = await raw.json();
             if (response.success) {
                 setEmployees(response.data);
@@ -19,8 +18,23 @@ const EmployeeListing = () => {
                 setEmployees([]);
                 setError(response.error);
             }
-        };
-        getEmployees();
+    };
+
+    useEffect(() => {
+        // async function getEmployees() {
+        //     const raw = await fetch(`${baseUrl}/api/v1/Employees`);
+        //     const response = await raw.json();
+        //     if (response.success) {
+        //         setEmployees(response.data);
+        //         setError(null);
+        //     }
+        //     else {
+        //         setEmployees([]);
+        //         setError(response.error);
+        //     }
+        // };
+        // getEmployees();
+        getEmpsTest();
     }, []);
 
     const addEmployeeModalId = "add-employee-modal";
@@ -58,6 +72,7 @@ const EmployeeListing = () => {
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target={`#${addEmployeeModalId}`}>Add Employee</button>
         <AddEmployeeModal
             id={addEmployeeModalId}
+            getEmployees={getEmpsTest}
         />
     </div>
     );
